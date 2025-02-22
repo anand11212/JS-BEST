@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Surprise</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('https://github.com/anand11212/Acharya11/blob/main/Snapchat-453493442.jpg?raw=true') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hidden { display: none; }
+        
+        button {
+            background-color: #ff6699;
+            color: white;
+            font-size: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        button:hover { background-color: #ff3366; }
+
+        .magic-area, .teddy-area, .surprise-area, .video-area {
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #blurred-img {
+            width: 250px;
+            height: auto;
+            filter: blur(10px);
+            margin-top: 20px;
+        }
+        
+        #teddy {
+            width: 150px;
+            margin-top: 20px;
+        }
+
+        #gift-box {
+            width: 200px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #final-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff3366;
+            margin-top: 20px;
+        }
+
+        @keyframes fireworks {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(3); }
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: yellow;
+            border-radius: 50%;
+            animation: fireworks 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="magic-area">
+        <button onclick="showMagic()">See Magic</button>
+    </div>
+    
+    <div class="teddy-area hidden">
+        <img id="blurred-img" src="https://github.com/anand11212/Acharya11/blob/main/IMG-20231121-WA0006.jpg?raw=true" alt="Memory">
+        <br>
+        <img id="teddy" src="https://github.com/anand11212/JS-BEST/blob/main/teddy.webp?raw=true" alt="Teddy">
+        <br>
+        <button onclick="showSurprise()">Click to See My Radha Rani</button>
+    </div>
+    
+    <div class="surprise-area hidden">
+        <img id="gift-box" src="https://i.imgur.com/KXJzshT.png" alt="Gift Box" onclick="openGift()">
+        <div id="final-message" class="hidden">Jeenal Sharma, You Are Perfect & Prettiest! 💖</div>
+        <br>
+        <button onclick="showVideo()">Click for a Special Video</button>
+    </div>
+
+    <div class="video-area hidden">
+        <video width="320" height="240" controls>
+            <source src="https://github.com/anand11212/JS-BEST/blob/main/Snapchat-555906080.mp4?raw=true" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        function showMagic() {
+            for(let i = 0; i < 15; i++) {
+                let firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.left = Math.random() * window.innerWidth + 'px';
+                firework.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1000);
+            }
+            setTimeout(() => {
+                document.querySelector('.magic-area').classList.add('hidden');
+                document.querySelector('.teddy-area').classList.remove('hidden');
+            }, 1500);
+        }
+
+        function showSurprise() {
+            document.querySelector('.teddy-area').classList.add('hidden');
+            document.querySelector('.surprise-area').classList.remove('hidden');
+        }
+
+        function openGift() {
+            document.querySelector('#gift-box').classList.add('hidden');
+            document.querySelector('#final-message').classList.remove('hidden');
+        }
+        
+        function showVideo() {
+            document.querySelector('.surprise-area').classList.add('hidden');
+            document.querySelector('.video-area').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
